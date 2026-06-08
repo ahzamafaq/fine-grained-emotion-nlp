@@ -2,7 +2,9 @@
 
 28-class multi-label emotion classification on Reddit comments using the [GoEmotions dataset](https://huggingface.co/datasets/google-research-datasets/go_emotions) by Google Research.
 
-We progressively build from a bag-of-words baseline to a fine-tuned RoBERTa transformer, comparing performance across four models.
+> 🎓 **Academic Context:** Individual project for the Hands-on NLP course, M1 Artificial Intelligence, Université Paris-Saclay (2025–26).
+
+Progressively building from a bag-of-words baseline to a fine-tuned RoBERTa transformer, comparing performance across four models on a heavily class-imbalanced corpus (180× gap between most and least frequent emotion).
 
 ---
 
@@ -30,6 +32,21 @@ Pre-trained GloVe embeddings (300-dimensional, trained on 6B tokens) fed into a 
 
 ### 4. RoBERTa Fine-Tuning
 Fine-tuned `roberta-base` via HuggingFace `Trainer`. Uses sqrt-dampened positive class weights in the BCE loss to handle imbalance without exploding gradients. Per-class threshold optimization on validation outputs gives the final classifier.
+
+---
+
+## 🧰 Tech Stack
+
+| Layer | Tools |
+|---|---|
+| **Language** | Python 3 |
+| **Data** | HuggingFace `datasets`, pandas, NumPy |
+| **Classical ML** | scikit-learn (`TfidfVectorizer`, `OneVsRestClassifier`, `LogisticRegression`) |
+| **Deep Learning** | PyTorch, `torch.nn` (BiLSTM, BCE loss) |
+| **Embeddings** | GloVe 300d (Stanford NLP) |
+| **Transformers** | HuggingFace `transformers` (`roberta-base`, `Trainer`, `AutoTokenizer`) |
+| **Visualisation** | Matplotlib |
+| **Runtime** | Google Colab (GPU: T4) |
 
 ---
 
